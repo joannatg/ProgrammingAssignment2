@@ -1,10 +1,10 @@
-## function creates mattirx obj, sets it`s value, gets that value and sets value of it`s inverse, and gets that value
+## function creates matirx obj, sets it`s value, gets that value and sets value of it`s inverse, and gets that value
 
 makeCacheMatrix <- function(x = matrix()) {  
    IM <- NULL
-  set <- function (y) {
-    x <<- y
-    IM <<- NULL
+   set <- function (y) {
+      x <<- y
+      IM <<- NULL
   }
   get <-function() x
   setMatrix <- function(inv) IM<<- inv
@@ -18,7 +18,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## if no value (empty), it gets initial data and solves the inverse value of matrix
 
 cacheSolve <- function(x, ...) {
- IM <- x$getMatrix()
+  IM <- x$getMatrix()
   if(!is.null(IM)){
     message("getting cached data")
     return(IM)
