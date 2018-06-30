@@ -1,32 +1,30 @@
-##function sets value of matrix, gets value of matrix, sets it`s inverse, and gets that value
-makeCacheMatrix <- function(x = matrix()) {
-  
-  IM <- NULL
-  set <- function(y) {
-    IM <<- y
+## function creates mattirx obj, sets it`s value, gets that value and sets value of it`s inverse, and gets that value
+
+makeCacheMatrix <- function(x = matrix()) {  
+   IM <- NULL
+  set <- function (y) {
+    x <<- y
     IM <<- NULL
   }
-  get <- function() x
-  setInverse <- function(inverse) IM <<- inverse
-  getInverse <- function() IM
-  list(set = set,
-       get = get,
-       setInverse = setInverse ,
-       getInverse = getInverse)
-  
+  get <-function() x
+  setMatrix <- function(inv) IM<<- inv
+  getMatrix <- function() IM
+  list (set=set, get=get, setMatrix=setMatrix, getMatrix=getMatrix)
 }
-## function gets output of makeCacheMatrix(matrix) and checks the value of the inverse of original matrix
-## if no value (empty) it gets initial matrix data and sets inverse matrix
-## if there is value, it get the value (of inverse matrix) and returns Retreiving cached data
+
+
+## function gets output of makeCacheMatrix(matrix) and checks the value of the inverse of the matrix
+## if there is value, it prints Retreiving cached data and return the inverse value  
+## if no value (empty), it gets initial data and solves the inverse value of matrix
 
 cacheSolve <- function(x, ...) {
-  IM <- x$getInverse()
-  if(!is.null(IM)) {
-    message("Retreiving cached data.")
+ IM <- x$getMatrix()
+  if(!is.null(IM)){
+    message("getting cached data")
     return(IM)
   }
-  data <- x$get()
-  IM<- solve(data)
-  x$setInverse(IM)
+  cd <- x$get()
+  IM <- solve(cd,...)
+  x$setMatrix(IM)
   IM
 }
