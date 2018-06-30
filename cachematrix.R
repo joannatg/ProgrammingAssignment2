@@ -28,3 +28,10 @@ cacheSolve <- function(x, ...) {
   x$setMatrix(IM)
   IM
 }
+## testing
+## a <- matrix(1:9, 3,3)
+## b <- makeCacheMatrix(a)
+## c <- cacheSolve(b)
+## c
+
+
